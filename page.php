@@ -26,14 +26,11 @@ get_header();
     h.appendChild(s);
   }})()
 </script>
-<div class="pluso" data-background="transparent" data-options="small,square,line,horizontal,noncounter,theme=01" data-services="vkontakte,facebook,twitter"></div>
-
-<i class="fa fa-calendar" aria-hidden="true"></i> <?php the_date(); ?><i class="fa fa-user" aria-hidden="true"></i><?php the_author(); ?>
+<div class="pluso" data-background="transparent" data-options="small,square,line,horizontal,noncounter,theme=01" data-services="vkontakte,facebook,twitter"></div><i class="fa fa-calendar" aria-hidden="true"></i> <?php the_date(); ?><i class="fa fa-user" aria-hidden="true"></i><?php the_author(); ?>
 
 
 		<?php the_content(); ?>
-<br>
-<p><i class="fa fa-pencil-square-o" aria-hidden="true"></i> <?php the_category(', '); ?><i class="fa fa-tags" aria-hidden="true"></i><?php the_tags(); ?><?php edit_post_link('edit', '<p>', '</p>'); ?></p>
+
 
                     </div></article></div>
 
@@ -59,8 +56,9 @@ if ($tags) {
 	<div class="threecol"><figure class="effect-sadie">
 		<a href="<?php the_permalink() ?>"><?php the_post_thumbnail('full', array('class' => 'imgnews') ); ?></a>
 			<figcaption>
-			<p><a href=""><?php the_title(); ?></a></p><h6><i class="fa fa-share" aria-hidden="true"></i></h6><span><?php $category = get_the_category(); echo $category[0]->cat_name; ?></span>
-			</figcaption></figure></div>
+			<p><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></p><h6><i class="fa fa-share" aria-hidden="true"></i></h6>
+			</figcaption>			
+			</figure></div>
 </li>
 <?php
 }

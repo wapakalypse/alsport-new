@@ -14,6 +14,10 @@
 
 <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i&amp;subset=cyrillic" rel="stylesheet">
 
+<link href="https://fonts.googleapis.com/css?family=Arimo" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+
 <link href="<?php echo get_template_directory_uri(); ?>/js/jquery.bxslider.css" rel="stylesheet" />
 
 <script src="<?php echo get_template_directory_uri(); ?>/js/jquery.bxslider.min.js"></script>

@@ -37,8 +37,7 @@ if ( $the_query->have_posts() ) {
 	while ( $the_query->have_posts() ) {
 		$the_query->the_post();
 			if ( has_post_thumbnail() ) {
-			$string .= '<li>';
-			$string .= '<a href="' . get_the_permalink() .'" rel="bookmark">' . get_the_post_thumbnail($post_id, 'full', array('class' => 'imgnews') ) .' <span class="phototext">' . get_the_title() .'</span></a></li>';
+			$string .= '<li><figure class="effect-sadie"><a href="' . get_the_permalink() .'" rel="bookmark">' . get_the_post_thumbnail($post_id, 'full', array('class' => 'imgnews') ) .'<h6><i class="fa fa-share" aria-hidden="true"></i></h6> </figure><span class="phototext">' . get_the_title() .'</span></a></li>';
 			} else {
 			// if no featured image is found
 			$string .= '<li><a href="' . get_the_permalink() .'" rel="bookmark">' . get_the_title() .'</a></li>';
@@ -55,7 +54,7 @@ add_filter('widget_text', 'do_shortcode');
 
 add_theme_support('html5', array('search-form'));
 
-
+// Similar posts
 function nav() {
 global $wp_query, $wp_rewrite;
 $pages = '';
