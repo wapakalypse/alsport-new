@@ -28,12 +28,37 @@ padding: 0;
 	font-style: normal;
 }
 
+@font-face {
+	font-family: 'Roboto Lt';
+	src: local("Roboto Lt"),
+	url(<?php echo get_template_directory_uri(); ?>/fonts/roboto.ttf);
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family:'Akrobat Bold';
+	src: local('Akrobat Bold'),
+	url(/wp-content/themes/alsport/fonts/akrobat-bold.otf);
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family:'Akrobat Regular';
+	src: local('Akrobat Regular'),
+	url(/wp-content/themes/alsport/fonts/akrobat-regular.otf);
+	font-weight: normal;
+	font-style: normal;
+}
+
+
 body {
 	font-size: 14pt;
-	font-family: 'Arimo', sans-serif;
 	font-family: 'Segoe UI';
+	font-family: 'Arimo';
 	line-height: 1.5;
-	background: #f9f9f9;
+	background: #f5f5f5;
 }
 
 img {
@@ -69,7 +94,7 @@ h4 {font-size:22px;}
 
 .imghead {
 	overflow: hidden;
-	height: 50%;
+	height: 40%;
 	width: 100%;
 	top: 0;
 }
@@ -103,7 +128,7 @@ footer p {
 	padding: 20px 40px;
 }
 
-.entry-meta p {
+.entry-content p {
 	line-height: 1.7;
 }
 
@@ -132,7 +157,7 @@ div#logo {
 }
 
 #hicons a:hover {
-	color:#E0AE15;
+	color:#EAE139;
 }
 
 .slider {
@@ -159,13 +184,14 @@ div#logo {
 }
 
 .maincontent {
-	width: 1280px;
+	width: 1000px;
 	margin: 0 auto;
-	background: #f7f7f7;
+	background: #f5f5f5;
+	border-right: 1px solid #E7E6E6;
+	border-left: 1px solid #E7E6E6;
 }
 
-.entry-meta {
-	width: 90%;
+.entry-content {
 	padding: 0 5%;
 	display: block;
 	text-align: justify;
@@ -184,14 +210,14 @@ div#logo {
 }
 
 .threecol {
-	width: 32%;
-	margin: 0 0 1% 1%;
+	width: 32.5%;
+	margin: 0 0 0.5% 0.3%;
 	display: inline-block;
 }
 
 .fourcol {
-	margin-left: 1.6%;
-	width: 23%;
+	margin-left: 0.3%;
+	width: 24.6%;
 	display: inline-block;
 }
 
@@ -224,12 +250,12 @@ div.featimg {
 	padding: 20px 0;
 }
 
-.entry-meta img {
+.entry-content img {
 	text-align: center;
 	margin-top: 20px;
 	display: block;
-//	width: 100%;
-//	height: auto;
+	width: 100%;
+	height: auto;
 }
 
 .post-title {
@@ -250,6 +276,12 @@ div.featimg {
 	border-radius: 10px;
 	text-align: center;
 	float: center;
+}
+
+.entry-meta {
+	border-top: 1px solid #D6D6D6;
+	border-bottom: 1px solid #D6D6D6;
+	padding: 15px 5%;
 }
 
 .entry-meta .fa {
@@ -275,26 +307,6 @@ div h2 {
 #am_upcoming_events-2,
 #text-20 {
 	background: #efeff1;	
-}
-
-.photorep li {
-	opacity:0.87;
-	transition: 0.5s;
-	margin-left: 0.2%;
-	width: 24.75%;
-	background: #f3f3f3;
-	display: inline-block; 	
-}
-.photorep li:hover {
-	opacity:1;
-	transition: 0.5s
-}
-.phototext {
-	padding: 10px 20px;
-	color: #000;
-	font-size: 18px;
-	position: relative;
-	display: block;
 }
 
 .events {
@@ -396,13 +408,15 @@ div h2 {
 	text-align: center;
 	top:30px;
 }
-
-.threecol figure {
+.threecol figure,
+.fourcol figure  {
 	position: relative;
 	overflow: hidden;
+}
+#news .threecol figure {
 	height: 35%;
 }
-figure.effect-sadie p a {
+figure.effect-sadie p {
 	position: absolute;
 	bottom: -5px;
 	padding: 1em 2em;
@@ -411,14 +425,18 @@ figure.effect-sadie p a {
 	background: rgba(0, 0, 0, 0.7);
 	width: 90%;
 }
+figure.effect-sadie p.photorep {
+	color: #000;
+	background: rgba(255, 255, 255, 0.8);
+}
 figure.effect-sadie:hover p a {
 	bottom: 0;
 }
 figure.effect-sadie span,
 figure.effect-sadie h6 {
 	position: absolute;
-	color: #333;
-	font-size: 20px;
+	color: #fff;
+	font-size: 22px;
 	font-family: 'Roboto Condensed', sans-serif;
 	text-transform: uppercase;
 	top: -30px;	
@@ -430,17 +448,22 @@ figure.effect-sadie img {
 	transition: opacity 0.3s;
 }
 figure.effect-sadie:hover img {
-//	opacity: 0.6;
+	opacity: 0.6;
 }
-figure.effect-sadie:hover h6 {
-	right: 20px;
+figure.effect-sadie:hover span {
+	font-size: 22px;
+	right: 30px;
 	top: 20px;
 	transition: 0.3s;
 }
-figure.effect-sadie:hover span {
-	left: 20px;
-	top: 15px;
-	transition: 0.3s;
+figure.effect-sadie:hover h6 {
+	left: 40%;
+	top: 30%;
+	color: #fff;
+	transition: 0.2s;
+	padding: 30px 40px;
+	border: 1px solid #fff;
+	border-radius: 10px;
 }
 
 .search-header {
@@ -464,7 +487,6 @@ figure.effect-sadie:hover span {
 	width: 150px;
 	visibility: visible;
 }
-
 
 .carre_couleur {
   height: 300px;

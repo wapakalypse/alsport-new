@@ -31,21 +31,21 @@ set_post_thumbnail_size(200, 150, false);
 
 // fotoreps in vidgets
 function devise_photorep() {
-$the_query = new WP_Query( array( 'category_name' => 'photo', 'posts_per_page' => 4 ) );
+$the_query = new WP_Query( array( 'tag' => 'photo', 'posts_per_page' => 4 ) );
 if ( $the_query->have_posts() ) {
-	$string .= '<ul class="photorep">';
+
 	while ( $the_query->have_posts() ) {
 		$the_query->the_post();
 			if ( has_post_thumbnail() ) {
-			$string .= '<li><figure class="effect-sadie"><a href="' . get_the_permalink() .'" rel="bookmark">' . get_the_post_thumbnail($post_id, 'full', array('class' => 'imgnews') ) .'<h6><i class="fa fa-share" aria-hidden="true"></i></h6> </figure><span class="phototext">' . get_the_title() .'</span></a></li>';
+			$string .= '<div class="fourcol">	<figure class="effect-sadie"><a href="' . get_the_permalink() .'">' . get_the_post_thumbnail($post_id, 'full', array('class' => 'imgnews') ) .' <figcaption><p class="photorep">' . get_the_title() .'</p><h6><i class="fa fa-share" aria-hidden="true"></i></h6></a></figcaption></figure></div>';
 			} else {
 			// if no featured image is found
-			$string .= '<li><a href="' . get_the_permalink() .'" rel="bookmark">' . get_the_title() .'</a></li>';
+			$string .= '<li>:<a href="' . get_the_permalink() .'" rel="bookmark">' . get_the_title() .'</a></li>';
 			}
 			}
 	} else {
 }
-$string .= '</ul>';
+
 return $string;
 wp_reset_postdata();
 }
