@@ -37,7 +37,7 @@ if ( $the_query->have_posts() ) {
 	while ( $the_query->have_posts() ) {
 		$the_query->the_post();
 			if ( has_post_thumbnail() ) {
-			$string .= '<div class="fourcol">	<figure class="effect-sadie"><a href="' . get_the_permalink() .'">' . get_the_post_thumbnail($post_id, 'full', array('class' => 'imgnews') ) .' <figcaption><p class="photorep">' . get_the_title() .'</p><h6><i class="fa fa-share" aria-hidden="true"></i></h6></a></figcaption></figure></div>';
+			$string .= '<div class="fourcol">	<figure class="effect-sadie"><a href="' . get_the_permalink() .'">' . get_the_post_thumbnail($post_id, 'full', array('class' => 'imgnews') ) .' <p class="photorep">' . get_the_title() .'</p><span><i class="fa fa-share" aria-hidden="true"></i></span></a></figure></div>';
 			} else {
 			// if no featured image is found
 			$string .= '<li>:<a href="' . get_the_permalink() .'" rel="bookmark">' . get_the_title() .'</a></li>';
@@ -74,4 +74,15 @@ echo $pages . paginate_links($a);
 if ($max > 1) echo '</div>';
 }
 
+?>
+
+<?php
+function posts_schet_class() {
+  global $post_num;
+  if ( ++$post_num % 2 )
+    $class = 'nechet';
+  else
+    $class = 'chet';
+  echo $class;
+}
 ?>

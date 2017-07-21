@@ -12,6 +12,8 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js" type="text/javascript"></script>
 
+<script src="jquery.jscroll.min.js" type="text/javascript"></script>
+
 <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i&amp;subset=cyrillic" rel="stylesheet">
 
 <link href="https://fonts.googleapis.com/css?family=Arimo" rel="stylesheet">
@@ -43,7 +45,7 @@
 </head>
 <body>
 	<header>
-		<div id="logo" class="menu-btn"><img class="logo-img alignnone size-full wp-image-164" src="http://localhost/wordpress/wp-content/uploads/2017/04/adsport.png" alt="our-bk-legion" width="300" height="300" /></div>
+		<div id="logo" class="menu-btn"><img class="logo-img alignnone size-full wp-image-164" src="http://localhost/wordpress/wp-content/uploads/2017/04/adsport.png" width="300" height="300" /></div>
 		<div id="hicons">
 
   <form class="search-header" role="search" method="get" id="searchform" class="searchform" action="/">

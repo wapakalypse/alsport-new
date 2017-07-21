@@ -80,11 +80,10 @@ h1, h2, h3, h4 {
 	font-weight: 500;
 }
 
-h1 {font-size:34px;}
-h2 {font-size:30px;}
-h3 {font-size:26px;}
-h4 {font-size:22px;}
-
+h1 {font-size:28pt;}
+h2 {font-size:22pt;}
+h3 {font-size:20pt;}
+h4 {font-size:18pt;}
 
 
 .imgnews {
@@ -92,11 +91,10 @@ h4 {font-size:22px;}
 	height: auto;
 }
 
-.imghead {
-	overflow: hidden;
-	height: 40%;
+.imghead,
+.imghead-single {
 	width: 100%;
-	top: 0;
+	position: absolute;
 }
 
 .imghead img {
@@ -127,7 +125,52 @@ footer p {
 	color: #fff;
 	padding: 20px 40px;
 }
+div#news {
+	padding-bottom: 50%;
+	position: relative;
+	width: 100%;
+	display: inline-block;
+}
+div#news article:nth-child(even),
+div#news article:nth-child(odd) {
+	width: 24.9%;
+	position: absolute;
+	height: 34%;
+}
 
+div#news article:nth-child(1) {
+	width: 50%;
+	left: 25%;
+	height: 68.4%;
+}
+article:nth-child(1) figure.effect-sadie p {
+	font-size: 23pt;
+}
+div#news article:nth-child(3) {
+	right: 0;
+}
+div#news article:nth-child(4) {
+	top: 33%;
+}
+div#news article:nth-child(5) {
+	top: 33%;
+	right: 0;
+}
+div#news article:nth-child(6) {
+	top: 66%;
+}
+div#news article:nth-child(7) {
+	top: 66%;
+	left: 25%;
+}
+div#news article:nth-child(8) {
+	top: 66%;
+	left: 50.1%;
+}
+div#news article:nth-child(9) {
+	top: 66%;
+	right: 0;
+}
 .entry-content p {
 	line-height: 1.7;
 }
@@ -187,18 +230,18 @@ div#logo {
 	width: 1000px;
 	margin: 0 auto;
 	background: #f5f5f5;
-	border-right: 1px solid #E7E6E6;
-	border-left: 1px solid #E7E6E6;
+	border: 1px solid #E7E6E6;
+	border-radius: 10px;
+	z-index: 99;
+	position: relative;
+	top: 300px;
+	margin-bottom: 300px;
 }
 
 .entry-content {
 	padding: 0 5%;
 	display: block;
 	text-align: justify;
-}
-
-#news {
-	margin: 2em 0;
 }
 
 .headnew {
@@ -247,7 +290,7 @@ div.featimg {
 
 .entry-title {
 	text-align: center;
-	padding: 20px 0;
+	padding: 40px 0;
 }
 
 .entry-content img {
@@ -293,20 +336,11 @@ div h2 {
 	margin: 20px 0;
 }
 
-.img-teams {
-	border-radius: 150px;
-	opacity:0.9;
-	transition: 0.5s;
-}
-
-.img-teams:hover {
-	opacity:1;
-	transition: 0.5s;
-}
-
 #am_upcoming_events-2,
-#text-20 {
-	background: #efeff1;	
+#text-17 {
+//	background: #E8E8E8;
+	background: url(http://localhost/wordpress/wp-content/uploads/2017/07/gazon.jpg) 0 100% no-repeat;
+	background-size: cover;
 }
 
 .events {
@@ -408,32 +442,38 @@ div h2 {
 	text-align: center;
 	top:30px;
 }
+
+#news figure  {
+	position: relative;
+	overflow: hidden;
+	height: 96%;
+}
+
 .threecol figure,
 .fourcol figure  {
 	position: relative;
 	overflow: hidden;
 }
-#news .threecol figure {
-	height: 35%;
-}
 figure.effect-sadie p {
 	position: absolute;
 	bottom: -5px;
-	padding: 1em 2em;
+	padding: 1em;
 	color: #fff;
-	font-size: 17px;
+	font-size: 15pt;
 	background: rgba(0, 0, 0, 0.7);
-	width: 90%;
+	width: 95%;
+	transition: 0.3s;
 }
 figure.effect-sadie p.photorep {
-	color: #000;
-	background: rgba(255, 255, 255, 0.8);
+	background: rgba(0,0,0,0);
+	bottom: -60px;
 }
-figure.effect-sadie:hover p a {
+figure.effect-sadie:hover p {
 	bottom: 0;
+	transition: 0.3s;
 }
-figure.effect-sadie span,
-figure.effect-sadie h6 {
+
+figure.effect-sadie span {
 	position: absolute;
 	color: #fff;
 	font-size: 22px;
@@ -455,15 +495,6 @@ figure.effect-sadie:hover span {
 	right: 30px;
 	top: 20px;
 	transition: 0.3s;
-}
-figure.effect-sadie:hover h6 {
-	left: 40%;
-	top: 30%;
-	color: #fff;
-	transition: 0.2s;
-	padding: 30px 40px;
-	border: 1px solid #fff;
-	border-radius: 10px;
 }
 
 .search-header {
@@ -488,22 +519,65 @@ figure.effect-sadie:hover h6 {
 	visibility: visible;
 }
 
-.carre_couleur {
-  height: 300px;
-  position: relative;
+.teams {
+	text-align: center;
 }
-.base_hov .retract {
-  transition: all 200ms ease-in;
-  position: absolute;
+.carre {
+	width: 300px;
+	height: 300px;
+	display: inline-block;
+	position: relative;
 }
-.base_hov:hover .retract {
-  transition: all 200ms ease-in;
-  transform: scale(0.8);
+.retract {
+	transition: 0.2s;
+	transform-origin: 50% 20%;
+}
+.carre:hover .retract {
+	transition: 0.3s;
+	transform: scale(0.9);
+}
+.carre:hover .acced {
+	transition: 0.3s;
+	opacity: 1;
 }
 .acced {
-
+	bottom: 0; 
+	position:absolute;
+	width: 100%;
+	font-size: 14pt;
+	opacity: 0;
+	transition: 0.3s;
 }
-.big_acced {
-  color:#ffffff;
-  font-size:25px;
+
+#toTop {
+	width: 50px;
+	font-size: 30pt;
+	background: rgba(0,0,0,0.3);
+	padding-top: 100vh;
+	position: fixed;
+	text-align: center;
+	left: 0;
+	bottom: 0;
+	cursor: pointer;
+	color: #efeff1;
+	display:none;
+}
+#mobile-menu .fa {
+	color: #efeff1;
+	text-align: center;
+	display: block;
+	margin-bottom: 10px;
+	font-size: 30pt;
+}
+#mobile-menu .fa:hover {
+	color:#EAE139;
+	transition: 0.3s;
+}
+#mobile-menu {
+	top: 0; 
+	position: fixed;
+	display:none;
+	width: 50px;
+	top: 10px;
+	z-index: 999;
 }

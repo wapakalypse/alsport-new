@@ -15,27 +15,30 @@
 </div>
 
 <div id="content">
-
+<h2 class="widget-title">Последние новости</h2>
 <?php
-$query = new WP_Query('cat=1,2,3,4,5,6,7,8,9,23&showposts=6');
-echo '<div id="news"><ul>';
-if( $query->have_posts() ){
+$query = new WP_Query('cat=1,2,3,4,5,6,7,8,9,23&showposts=9');
+echo '<div id="news">';
+if( $query->have_posts()) {
 	while( $query->have_posts() ){ $query->the_post();
 	?>
-	<div class="threecol">
+	<article>
 	<figure class="effect-sadie">
 		<a href="<?php the_permalink() ?>"><?php the_post_thumbnail('full', array('class' => 'imgnews') ); ?></a>
 			<figcaption>
-			<p><?php the_title(); ?></p></h6><span><?php $category = get_the_category(); echo $category[0]->cat_name; ?></span>
-			</figcaption></figure></div>
+			<p><?php the_title(); ?><?php get_the_ID(); ?></p><span><?php $category = get_the_category(); echo $category[0]->cat_name; ?></span>
+			</figcaption></figure></article>
+
 	<?php
 	}
-echo '</ul></div>';
+echo '</div>';
 	wp_reset_postdata();
 } 
 else echo 'Записей нет.';
 ?>
+
 	<a class="post-title" href="https://alsport.kz/sportivnye-sobyitiya-almaty-2017">ВСЕ НОВОСТИ</a>
+
 </div>
 
 <?php dynamic_sidebar( 'true_side' ); ?>

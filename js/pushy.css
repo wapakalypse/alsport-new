@@ -41,6 +41,7 @@
   -webkit-transform: translate3d(0, 0, 0);
   -ms-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
+        z-index: 99999;
 }
 .pushy-open-left .pushy-content,
 .pushy-open-right .pushy-content {
@@ -77,10 +78,6 @@
 .menu-btn {
   cursor: pointer;
       transition: 0.5s;
-}
-.menu-btn:hover {
-  opacity: 0.6;
-    transition: 0.5s;
 }
 
 @keyframes fade {

@@ -4,13 +4,13 @@ $field = get_post_meta($post->ID, 'redirect', true);
 if($field) wp_redirect(clean_url($field), 301);
 get_header();
 ?><div id="content" style="background: #efeff1;">
-	<div class="imghead"><a href="<?php the_permalink() ?>"><?php the_post_thumbnail('full', array('class' => 'imgnews') ); ?></a></div>
+	<div class="imghead-single"><a href="<?php the_permalink() ?>"><?php the_post_thumbnail('full', array('class' => 'imgnews') ); ?></a></div>
 
 <?php while ( have_posts() ) : the_post(); ?><?php endwhile; ?>
 
 	<div class="maincontent">
 	<?php if ( function_exists('yoast_breadcrumb') ) { yoast_breadcrumb('<p id="breadcrumbs">','</p>'); } ?>
-	<article class="<?php post_class(); ?>" id="post-<?php the_ID(); ?>">
+	<article>
 			<h1 class="entry-title"><a title="<?php printf( esc_attr__( 'Permalink to %s', 'striped' ), the_title_attribute( 'echo=0' ) ); ?>" href="<?php the_permalink(); ?>" rel="bookmark">
 			<?php the_title(); ?>
 			</a></h1>
@@ -35,7 +35,6 @@ get_header();
 <br>
 	<p><i class="fa fa-pencil-square-o" aria-hidden="true"></i> <?php the_category(', '); ?><i class="fa fa-tags" aria-hidden="true"></i><?php the_tags(); ?><?php edit_post_link('edit', '<p>', '</p>'); ?></p>
 
-	</div>
 
 <div class="similar_records">
 <h2 style="text-align: center;">Похожие записи:</h2>
@@ -59,7 +58,7 @@ if ($tags) {
 	<div class="threecol"><figure class="effect-sadie">
 		<a href="<?php the_permalink() ?>"><?php the_post_thumbnail('full', array('class' => 'imgnews') ); ?></a>
 			<figcaption>
-			<p><?php the_title(); ?></p><span><i class="fa fa-share" aria-hidden="true"></i></span>
+			<a href="<?php the_title(); ?>"><?php the_title(); ?></a><span><i class="fa fa-share" aria-hidden="true"></i></span>
 			</figcaption></figure></div>
 </li>
 <?php
@@ -67,6 +66,7 @@ if ($tags) {
 echo '</ul>';
 }
 wp_reset_query();} 
-?></div></div></article></div>
+?>
+	</div></div></div></article></div>
 <?php dynamic_sidebar( 'true_side' ); ?>
 <?php get_footer(); ?>
