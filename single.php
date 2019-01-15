@@ -3,19 +3,25 @@ global $post; // < -- globalize, just in case
 $field = get_post_meta($post->ID, 'redirect', true);
 if($field) wp_redirect(clean_url($field), 301);
 get_header();
-?><div id="content" style="background: #efeff1;">
-	<div class="imghead-single"><a href="<?php the_permalink() ?>"><?php the_post_thumbnail('full', array('class' => 'imgnews') ); ?></a></div>
+?>
+
+<div id="content" >
 
 <?php while ( have_posts() ) : the_post(); ?><?php endwhile; ?>
 
-	<div class="maincontent">
-	<?php if ( function_exists('yoast_breadcrumb') ) { yoast_breadcrumb('<p id="breadcrumbs">','</p>'); } ?>
-	<article>
-			<h1 class="entry-title"><a title="<?php printf( esc_attr__( 'Permalink to %s', 'striped' ), the_title_attribute( 'echo=0' ) ); ?>" href="<?php the_permalink(); ?>" rel="bookmark">
-			<?php the_title(); ?>
-			</a></h1>
+<div class="imghead-fix" style="background-image: url(<?php
+$thumb_id = get_post_thumbnail_id();
+$thumb_url = wp_get_attachment_image_src($thumb_id,'thumbnail-size', true);
+echo $thumb_url[0];
+?>);">
 
-	<div class="entry-meta">
+<h1 class="entry-title"><?php the_title(); ?></h1>
+
+<div class="maincontent">
+	<?php if ( function_exists('yoast_breadcrumb') ) { yoast_breadcrumb('<p id="breadcrumbs">','</p>'); } ?>
+
+		<div class="entry-meta">
+
 <script type="text/javascript">window.onload=(function() {
   if (window.pluso)if (typeof window.pluso.start == "function") return;
   if (window.ifpluso==undefined) { window.ifpluso = 1;
@@ -26,47 +32,47 @@ get_header();
     h.appendChild(s);
   }})()
 </script>
-<div class="pluso" data-background="transparent" data-options="small,square,line,horizontal,noncounter,theme=01" data-services="vkontakte,facebook,twitter"></div>
+<div class="pluso" data-background="transparent" data-options="small,square,line,horizontal,noncounter,theme=01" data-services="vkontakte,facebook,twitter,odnoklassniki,google,moimir"></div>
 
-<i class="fa fa-calendar" aria-hidden="true"></i> <?php the_date(); ?><i class="fa fa-user" aria-hidden="true"></i><?php the_author(); ?>	</div>
-
+<i class="fa fa-calendar" aria-hidden="true"></i> <?php $text = get_the_date('d.m.Y'); $url  = get_the_date('/Y/m/'); echo get_archives_link( $url, $text, '' ); ?><i class="fa fa-user" aria-hidden="true"></i><?php the_author_posts_link(); ?> </div>
+	<article>
 	<div class="entry-content">
 		<?php the_content(); ?>
-<br>
-	<p><i class="fa fa-pencil-square-o" aria-hidden="true"></i> <?php the_category(', '); ?><i class="fa fa-tags" aria-hidden="true"></i><?php the_tags(); ?><?php edit_post_link('edit', '<p>', '</p>'); ?></p>
-
-
+	</div>
+	</article>
+	<div class="entry-meta">
+	<i class="fa fa-location-arrow" aria-hidden="true"></i> <?php the_category(', '); ?><i class="fa fa-tags" aria-hidden="true"></i><?php the_tags('', ' / '); ?><?php edit_post_link('<i class="fa fa-pencil-square-o" aria-hidden="true"></i>', ' '); ?>
+</div>
 <div class="similar_records">
-<h2 style="text-align: center;">Похожие записи:</h2>
-<?php $tags = wp_get_post_tags($post->ID);
-if ($tags) {
- $tag_ids = array();
- foreach($tags as $individual_tag) $tag_ids[] = $individual_tag->term_id;
+<div class="widget-title">Другие новости:</div>
+<?php $cats = get_the_category($post->ID);
+if ($cats) {
+ $cat_ids = array();
+ foreach($cats as $individual_cat) $cat_ids[] = $individual_cat->term_id;
  $args=array(
- 'tag__in' => $tag_ids, // Сортировка происходит по тегам (меткам)
+ 'category__in' => $cat_ids, // Сортировка происходит по тегам (меткам)
  'orderby'=>date, // Добавляем условие сортировки рандом (случайный подбор)
  'caller_get_posts'=>1, // Запрещаем повторение ссылок
  'post__not_in' => array($post->ID),
- 'showposts'=>6 // Цифра означает количество выводимых записей
+ 'showposts'=>9 // Цифра означает количество выводимых записей
  );
  $my_query = new wp_query($args);
  if( $my_query->have_posts() ) {
- echo '<ul>';
+ echo '<div  class="greed-3">';
         while ($my_query->have_posts()) {
             $my_query->the_post();
         ?>
-	<div class="threecol"><figure class="effect-sadie">
+	<figure class="effect-sadie similar">
 		<a href="<?php the_permalink() ?>"><?php the_post_thumbnail('full', array('class' => 'imgnews') ); ?></a>
 			<figcaption>
-			<a href="<?php the_title(); ?>"><?php the_title(); ?></a><span><i class="fa fa-share" aria-hidden="true"></i></span>
-			</figcaption></figure></div>
-</li>
+			<a href="<?php the_permalink() ?>'"><?php the_title(); ?><?php get_the_ID(); ?></a>
+			</figcaption></figure>
 <?php
 }
-echo '</ul>';
+echo '</div>';
 }
 wp_reset_query();} 
 ?>
-	</div></div></div></article></div>
+</div></div></div>
 <?php dynamic_sidebar( 'true_side' ); ?>
 <?php get_footer(); ?>

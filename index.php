@@ -1,23 +1,24 @@
 <?php get_header (); ?>
 
-<div class="slider1">
+<div id="slider-css">
+	<section class="slide">
     <?php
-        $args = array('cat'=>'32','showposts' => 10,'order' => 'DESC' );
+        $args = array('cat'=>'337','showposts' => 10,'order' => 'DESC' );
         query_posts($args);
         while ( have_posts() ) : the_post();
     ?>
-    <div class="slider">
-            <a href="<?php the_permalink() ?>"><?php the_post_thumbnail('full'); ?></a>
-
-    </div>
+		<figure>
+            		<a href="<?php the_permalink() ?>"><?php the_post_thumbnail('full'); ?></a>
+		</figure>
     <?php endwhile; wp_reset_query(); ?>
     <?php $wp_query1 = $temp_query1; ?>
+	</section>
 </div>
 
 <div id="content">
 <h2 class="widget-title">Последние новости</h2>
 <?php
-$query = new WP_Query('cat=1,2,3,4,5,6,7,8,9,23&showposts=9');
+$query = new WP_Query('cat=1,4,5,6,9,14,15,16,17,20,23,24,25,26,238,239,240,263,300,334,350&showposts=9');
 echo '<div id="news">';
 if( $query->have_posts()) {
 	while( $query->have_posts() ){ $query->the_post();
@@ -26,9 +27,8 @@ if( $query->have_posts()) {
 	<figure class="effect-sadie">
 		<a href="<?php the_permalink() ?>"><?php the_post_thumbnail('full', array('class' => 'imgnews') ); ?></a>
 			<figcaption>
-			<p><?php the_title(); ?><?php get_the_ID(); ?></p><span><?php $category = get_the_category(); echo $category[0]->cat_name; ?></span>
+			<p><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a><?php get_the_ID(); ?></p><span><?php $category = get_the_category(); echo $category[0]->cat_name; ?></span>
 			</figcaption></figure></article>
-
 	<?php
 	}
 echo '</div>';
@@ -36,9 +36,7 @@ echo '</div>';
 } 
 else echo 'Записей нет.';
 ?>
-
-	<a class="post-title" href="https://alsport.kz/sportivnye-sobyitiya-almaty-2017">ВСЕ НОВОСТИ</a>
-
+	<a class="post-title" href="https://alsport.kz/news">ВСЕ НОВОСТИ</a>
 </div>
 
 <?php dynamic_sidebar( 'true_side' ); ?>
